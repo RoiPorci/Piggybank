@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Piggybank.Data;
+using Piggybank.Data.Interfaces;
+using Piggybank.Data.Repositories;
 using Piggybank.Shared.Constants;
 
 namespace Piggybank.Api.Configurations
@@ -28,7 +30,7 @@ namespace Piggybank.Api.Configurations
 
         public static void AddRepositories(this IServiceCollection services)
         {
-            
+            services.AddScoped<IAppUserRepository, AppUserRepository>();
         }
     }
 }
