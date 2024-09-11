@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piggybank.Api", "Piggybank.Api\Piggybank.Api.csproj", "{53EA415A-77D1-4696-857F-9AEA78870585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piggybank.Business", "Piggybank.Business\Piggybank.Business.csproj", "{815FD937-D65D-4C73-9F56-06F9C0579EB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piggybank.Data", "Piggybank.Data\Piggybank.Data.csproj", "{5BB51157-092A-4648-9E88-10F4C75E3205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piggybank.Models", "Piggybank.Models\Piggybank.Models.csproj", "{AABB6238-1E1E-4EE2-910E-31703811292C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piggybank.Shared", "Piggybank.Shared\Piggybank.Shared.csproj", "{F727FCB4-E5EF-4F05-B83B-2F8BB9F4D54B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piggybank.Tests", "Piggybank.Tests\Piggybank.Tests.csproj", "{4D40CF51-370E-4152-BD90-E38C1E1B306E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53EA415A-77D1-4696-857F-9AEA78870585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EA415A-77D1-4696-857F-9AEA78870585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EA415A-77D1-4696-857F-9AEA78870585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EA415A-77D1-4696-857F-9AEA78870585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815FD937-D65D-4C73-9F56-06F9C0579EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815FD937-D65D-4C73-9F56-06F9C0579EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815FD937-D65D-4C73-9F56-06F9C0579EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815FD937-D65D-4C73-9F56-06F9C0579EB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BB51157-092A-4648-9E88-10F4C75E3205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BB51157-092A-4648-9E88-10F4C75E3205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BB51157-092A-4648-9E88-10F4C75E3205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BB51157-092A-4648-9E88-10F4C75E3205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AABB6238-1E1E-4EE2-910E-31703811292C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AABB6238-1E1E-4EE2-910E-31703811292C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AABB6238-1E1E-4EE2-910E-31703811292C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AABB6238-1E1E-4EE2-910E-31703811292C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F727FCB4-E5EF-4F05-B83B-2F8BB9F4D54B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F727FCB4-E5EF-4F05-B83B-2F8BB9F4D54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F727FCB4-E5EF-4F05-B83B-2F8BB9F4D54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F727FCB4-E5EF-4F05-B83B-2F8BB9F4D54B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D40CF51-370E-4152-BD90-E38C1E1B306E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D40CF51-370E-4152-BD90-E38C1E1B306E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D40CF51-370E-4152-BD90-E38C1E1B306E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D40CF51-370E-4152-BD90-E38C1E1B306E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
