@@ -1,11 +1,66 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "Piggybank.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Piggybank.Models": "1.0.0",
+          "Piggybank.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Piggybank.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Piggybank.Data.dll": {}
+        }
+      },
+      "Piggybank.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Piggybank.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Piggybank.Models.dll": {}
+        }
+      },
+      "Piggybank.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Piggybank.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Piggybank.Shared.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Piggybank.Data/1.0.0": {
+      "type": "project",
+      "path": "../Piggybank.Data/Piggybank.Data.csproj",
+      "msbuildProject": "../Piggybank.Data/Piggybank.Data.csproj"
+    },
+    "Piggybank.Models/1.0.0": {
+      "type": "project",
+      "path": "../Piggybank.Models/Piggybank.Models.csproj",
+      "msbuildProject": "../Piggybank.Models/Piggybank.Models.csproj"
+    },
+    "Piggybank.Shared/1.0.0": {
+      "type": "project",
+      "path": "../Piggybank.Shared/Piggybank.Shared.csproj",
+      "msbuildProject": "../Piggybank.Shared/Piggybank.Shared.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "Piggybank.Data >= 1.0.0",
+      "Piggybank.Models >= 1.0.0",
+      "Piggybank.Shared >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\bouli\\.nuget\\packages\\": {},
@@ -39,7 +94,17 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\Projects\\Porci\\Piggybank\\backend\\Piggybank.Data\\Piggybank.Data.csproj": {
+              "projectPath": "E:\\Projects\\Porci\\Piggybank\\backend\\Piggybank.Data\\Piggybank.Data.csproj"
+            },
+            "E:\\Projects\\Porci\\Piggybank\\backend\\Piggybank.Models\\Piggybank.Models.csproj": {
+              "projectPath": "E:\\Projects\\Porci\\Piggybank\\backend\\Piggybank.Models\\Piggybank.Models.csproj"
+            },
+            "E:\\Projects\\Porci\\Piggybank\\backend\\Piggybank.Shared\\Piggybank.Shared.csproj": {
+              "projectPath": "E:\\Projects\\Porci\\Piggybank\\backend\\Piggybank.Shared\\Piggybank.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
