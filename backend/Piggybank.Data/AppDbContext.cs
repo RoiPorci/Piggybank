@@ -18,7 +18,12 @@ namespace Piggybank.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Supp configuration via Fluent API (if needed)
+            modelBuilder.Entity<AppUser>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasMaxLength(450)
+                    .IsRequired();
+            });
         }
     }
 }

@@ -14,6 +14,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    await app.AddDefaultAdmin();
+    await app.AddDefaultUser();
 }
 
 app.UseMiddleware<ErrorHandlingMiddleware>();

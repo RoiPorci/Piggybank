@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.39" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Piggybank.Data\Piggybank.Data.csproj" />
     <ProjectReference Include="..\Piggybank.Models\Piggybank.Models.csproj" />
     <ProjectReference Include="..\Piggybank.Shared\Piggybank.Shared.csproj" />

@@ -4,7 +4,7 @@
     {
         // Database
         public const string DefaultConnectionString = "DefaultConnection";
-        public const string DbPasswordEnvVariable = "DB_PASSWORD";
+        public const string DbPasswordEnvVariable = "DbPasswordEnvVariable";
         public const string DbPasswordInConnectionstring = "%DB_PASSWORD%";
 
         // Roles
@@ -20,5 +20,15 @@
 
         // Password
         public const int PasswordMinLength = 6;
+
+        // Default Admin (if env.Dev)
+        public const string DefaultAdminUserName = "PiggyAdmin";
+        public const string DefaultAdminEmail = "admin@dev.com";
+        public const string DefaultAdminPassword = "Admin@1234";
+
+        // Default Admin (if env.Dev)
+        public const string DefaultUserUserName = "PiggyUser";
+        public const string DefaultUserEmail = "user@dev.com";
+        public const string DefaultUserPassword = "User@1234";
     }
 }
