@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing.Patterns;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Piggybank.Business.Interfaces;
-using Piggybank.Models;
 using Piggybank.Shared.Constants;
+using Piggybank.Shared.Dtos;
 
 namespace Piggybank.Api.Controller
 {
-    [Route(RoutePatterns.ApiRoute)]
+    [Route(RoutePatterns.AdminApiRoute)]
     [ApiController]
+    [Authorize(Policy = ConfigConstants.AdminPolicy)]
     public class AppUserController : ControllerBase
     {
         private readonly IAppUserService _userService;
@@ -20,11 +21,22 @@ namespace Piggybank.Api.Controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUser>>> Get()
+        public async Task<ActionResult<IEnumerable<AppUserDto>>> Get()
         {
-            IEnumerable<AppUser> users = await _userService.GetAllAsync();
+            IEnumerable<AppUserDto> users = await _userService.GetAllWithRolesAsync();
 
             return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AppUserDto>> GetById(string id)
+        {
+            AppUserDto? user = await _userService.GetByIdWithRolesAsync(id);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
         }
     }
 }

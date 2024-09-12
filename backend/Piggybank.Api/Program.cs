@@ -8,6 +8,8 @@ builder.Services.AddApplicationServices(builder.Configuration);
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
+await app.AddRoles();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -16,6 +18,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

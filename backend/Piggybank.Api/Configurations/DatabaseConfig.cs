@@ -17,12 +17,15 @@ namespace Piggybank.Api.Configurations
         public static void AddAppDbContext(this IServiceCollection services, IConfiguration configuration)
         {
             string connectionString = configuration.GetConnectionString(ConfigConstants.DefaultConnectionString)
-                ?? throw new InvalidOperationException(ErrorMessages.ConnectionStringNotFound);
+                ?? throw new InvalidOperationException(string.Format(ErrorMessages.ConnectionStringNotFound, ConfigConstants.DefaultConnectionString));
 
-            string dbPassword = Environment.GetEnvironmentVariable(ConfigConstants.DbPassword)
-                ?? throw new InvalidOperationException(ErrorMessages.EnvironmentVariableDbPasswordNotFound);
+            string dbPasswordEnvVariable = configuration[ConfigConstants.DbPasswordEnvVariable]
+                ?? throw new InvalidOperationException(string.Format(ErrorMessages.DbPasswordEnvVariableNotFound, ConfigConstants.DbPasswordEnvVariable));
 
-            connectionString = connectionString.Replace($"%{ConfigConstants.DbPassword}%", dbPassword);
+            string dbPassword = Environment.GetEnvironmentVariable(dbPasswordEnvVariable)
+                ?? throw new InvalidOperationException(string.Format(ErrorMessages.EnvironmentVariableNotFound, dbPasswordEnvVariable));
+
+            connectionString = connectionString.Replace($"{ConfigConstants.DbPasswordInConnectionstring}", dbPassword);
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(connectionString));
