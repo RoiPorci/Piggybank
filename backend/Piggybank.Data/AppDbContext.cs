@@ -17,13 +17,6 @@ namespace Piggybank.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<AppUser>(entity =>
-            {
-                entity.Property(e => e.Id)
-                    .HasMaxLength(450)
-                    .IsRequired();
-            });
         }
     }
 }

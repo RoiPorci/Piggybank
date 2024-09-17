@@ -8,6 +8,8 @@ namespace Piggybank.Api.Configurations
         public static void AddBusinessServices(this IServiceCollection services)
         {
             services.AddScoped<IAppUserService, AppUserService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ITokenService, TokenService>();
         }
     }
 }
