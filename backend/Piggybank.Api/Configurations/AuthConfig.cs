@@ -8,14 +8,26 @@ using System.Text;
 
 namespace Piggybank.Api.Configurations
 {
+    /// <summary>
+    /// Provides configuration methods for authentication and authorization services, including JWT and Identity.
+    /// </summary>
     public static class AuthConfig
     {
+        /// <summary>
+        /// Configures authentication and authorization services for the application.
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/> to add services to.</param>
+        /// <param name="configuration">The configuration to retrieve JWT settings.</param>
         public static void AddAuthServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddIdentityAutorization();
             services.AddJwtAuthentication(configuration);
         }
 
+        /// <summary>
+        /// Configures Identity and authorization services, including role-based policies.
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/> to add services to.</param>
         public static void AddIdentityAutorization(this IServiceCollection services)
         {
             services.AddIdentity<AppUser, AppRole>(options =>
@@ -32,6 +44,12 @@ namespace Piggybank.Api.Configurations
             });
         }
 
+        /// <summary>
+        /// Configures JWT authentication services for the application, including token validation parameters.
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/> to add services to.</param>
+        /// <param name="configuration">The configuration to retrieve JWT settings.</param>
+        /// <exception cref="InvalidOperationException">Thrown if the JWT secret is not found in the configuration.</exception>
         public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(options =>
@@ -40,10 +58,9 @@ namespace Piggybank.Api.Configurations
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                string jwtSecret = configuration[ConfigConstants.JwtSecret]
+                string jwtSecret = configuration.GetSection(ConfigConstants.JwtSection)[ConfigConstants.JwtSecret]
                     ?? throw new InvalidOperationException(string.Format(ErrorMessages.JwtSecretNotFound, ConfigConstants.JwtSecret));
 
-                // Configure JWT (ex: secret, validation)
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
@@ -56,12 +73,20 @@ namespace Piggybank.Api.Configurations
             });
         }
 
+        /// <summary>
+        /// Adds the default roles (Admin and User) to the application if they do not already exist.
+        /// </summary>
+        /// <param name="app">The <see cref="WebApplication"/> instance.</param>
         public static async Task AddRoles(this WebApplication app)
         {
             await app.AddAdminRole();
             await app.AddUserRole();
         }
 
+        /// <summary>
+        /// Adds the Admin role to the application if it does not exist.
+        /// </summary>
+        /// <param name="app">The <see cref="WebApplication"/> instance.</param>
         public static async Task AddAdminRole(this WebApplication app)
         {
             using (IServiceScope scope = app.Services.CreateScope())
@@ -80,6 +105,10 @@ namespace Piggybank.Api.Configurations
             }
         }
 
+        /// <summary>
+        /// Adds the User role to the application if it does not exist.
+        /// </summary>
+        /// <param name="app">The <see cref="WebApplication"/> instance.</param>
         public static async Task AddUserRole(this WebApplication app)
         {
             using (IServiceScope scope = app.Services.CreateScope())
