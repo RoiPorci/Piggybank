@@ -6,6 +6,7 @@
         {
             services.AddDatabaseServices(configuration);
             services.AddBusinessServices();
+            services.AddContextsServices();
             services.AddControllers();
             services.AddAuthServices(configuration);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

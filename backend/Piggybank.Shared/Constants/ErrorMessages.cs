@@ -16,6 +16,12 @@
         public const string RegisterFailure = "Register failed.";
         public const string RefreshTokenFailure = "Refresh token failed.";
         public const string LogoutFailure = "Logout failed.";
+        public const string DeleteFailure = "Delete failed.";
         public const string PasswordsMismatch = "Passwords do not match.";
+        public const string UserNotFound = "User with the ID ({0}) not found.";
+        public const string UserIdNotFound = "User ID not found.";
+        public const string TokenNotFound = "Token not found.";
+        public const string WrongPassword = "Wrong password.";
+        public const string NoNewPassword = "No new password.";
     }
 }

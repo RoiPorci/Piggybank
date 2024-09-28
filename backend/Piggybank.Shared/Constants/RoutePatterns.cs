@@ -8,7 +8,13 @@
         // Auth 
         public const string Login = "login";
         public const string Register = "register";
-        public const string RefreshToken = "refresh_token";
+        public const string RefreshToken = "refresh-token";
+        public const string UserInfo = "user-info";
+        public const string Update = "update";
+        public const string ChangePassword = "change-password";
+        public const string ForgotPassword = "forgot-password";
+        public const string ResetPassword = "reset-password";
         public const string Logout = "logout";
+        public const string Delete = "delete";
     }
 }

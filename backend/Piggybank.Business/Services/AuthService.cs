@@ -34,7 +34,7 @@ namespace Piggybank.Business.Services
                 return null;
             }
 
-            await _userService.UpdateLastLogin(user);
+            await _userService.UpdateLastLoginAsync(user);
             IEnumerable<string> roles = await _userService.GetRolesAsync(user);
 
             TokenDto token = _tokenService.GenerateJwtToken(user, roles);
@@ -45,6 +45,11 @@ namespace Piggybank.Business.Services
         public async Task LogoutAsync(string userId)
         {
             AppUser? user = await _userService.GetByIdAsync(userId);
+        }
+
+        public async Task<AppUserDto?> GetUserInfoByIdAsync(string userId)
+        {
+            return await _userService.GetByIdWithRolesAsync(userId);
         }
 
         public async Task<TokenDto?> RefreshTokenAsync(string userId)
@@ -70,9 +75,70 @@ namespace Piggybank.Business.Services
                 CreatedAt = DateTime.UtcNow,
             };
 
-            IdentityResult result = await _userService.AddAsync(user, registerDto.Password, ConfigConstants.UserRole);
+            IdentityResult result = await _userService.AddAsync(user, registerDto.Password, new List<string> { ConfigConstants.UserRole });
 
             return result;
+        }
+
+        public async Task<IdentityResult> UpdateAsync(UpdateAppUserDto updateDto, string userId)
+        {
+            AppUser? user = await _userService.GetByIdAsync(userId);
+
+            if (user == null)
+            {
+                return IdentityResult.Failed(new IdentityError{
+                    Code = nameof(ErrorMessages.UserNotFound), 
+                    Description = ErrorMessages.UserNotFound
+                    });
+            }
+
+            user.UserName = updateDto.UserName;
+            user.Email = updateDto.Email;
+
+            return await _userService.UpdateAsync(user, new List<string>());
+        }
+
+        public async Task<IdentityResult> ChangePasswordAsync(ChangePasswordDto changePasswordDto, string userId)
+        {
+            AppUser? user = await _userService.GetByIdAsync(userId);
+
+            if (user == null)
+                return IdentityResult.Failed(new IdentityError
+                {
+                    Code = nameof(ErrorMessages.UserNotFound),
+                    Description = ErrorMessages.UserNotFound
+                });
+
+            return await _userService.ChangePasswordAsync(user, changePasswordDto.CurrentPassword, changePasswordDto.NewPassword);
+        }
+
+        public async Task<string?> GeneratePasswordResetTokenAsync(string email)
+        {
+            AppUser? user = await _userService.GetByEmailAsync(email);
+
+            if (user == null)
+                return null;
+
+            return await _userService.GeneratePasswordResetTokenAsync(user);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(string userEmail, string token, string newPassword)
+        {
+            AppUser? user = await _userService.GetByEmailAsync(userEmail);
+
+            if (user == null)
+                return IdentityResult.Failed(new IdentityError
+                {
+                    Code = nameof(ErrorMessages.UserNotFound),
+                    Description = ErrorMessages.UserNotFound
+                });
+
+            return await _userService.ResetPasswordAsync(user, token, newPassword);
+        }
+
+        public async Task<IdentityResult> DeleteAsync(string userId)
+        {
+            return await _userService.DeleteAsync(userId);
         }
     }
 }

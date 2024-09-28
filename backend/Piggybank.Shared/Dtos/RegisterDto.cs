@@ -5,8 +5,7 @@ namespace Piggybank.Shared.Dtos
 {
     public class RegisterDto
     {
-        [Required]
-        [EmailAddress]
+        [Required, EmailAddress]
         public string Email { get; set; }
 
         [Required]
